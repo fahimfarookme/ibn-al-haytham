@@ -1,0 +1,33 @@
+{
+  "name": "ibn-al-haytham",
+  "version": "0.0.1",
+  "description": "The flexible calendar",
+  "main": [
+    "dist/ibn-al-haytham.min.js",
+    "dist/ibn-al-haytham.css"
+  ],
+  "authors": [
+    "Fahim Farook"
+  ],
+  "license": "",
+  "keywords": [
+    "calendar",
+    "datepicker",
+    "ibn-al-haytham",
+    "haytham"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "https://github.com/fahimfarookme/ibn-al-haytham",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.0"
+  }
+}

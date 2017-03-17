@@ -1,0 +1,28 @@
+{
+   "name": "ibn-al-haytham",
+   "version": "0.0.1",
+   "src": "src",
+   "test": "test",
+   "dist": "dist",
+   "temp": ".tmp",
+   "browserSync": {
+      "testPort": 9998,
+      "testHost": "localhost"
+   },
+   "optimize": {
+      "css": {
+         "minify": true,
+         "concat": true,
+         "file": "ibn-al-haytham.css"
+        },
+      "js": {
+         "minify": true,
+         "concat": true
+      }
+   },
+   "concatOrder": [
+      "src/ibn-al-haytham.js", 
+      "src/**/*.js", 
+      "!src/jquery-plugin.js", "src/jquery-plugin.js"
+   ]
+}
