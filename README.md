@@ -1,2 +1,3 @@
 # ibn-al-haytham
-The flexible calendar 
+
+A basic customizable calendar.
