@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html >
-   <head>
-      <title>Haytham Calendar</title>
-      <meta name="author" content="Fahim" />
-      <link rel="stylesheet" type="text/css" href="../dist/ibn-al-haytham.css" />
-   </head>
-   <body>
-      <div class="container">
-         <input type="text" name="" value="calendar">
-         <div class="iah-datepicker-container"></div>
-      </div>
+<html>
 
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-      <script type="text/javascript" src="../dist/ibn-al-haytham.min.js"></script>
-      <script type="text/javascript">  
-         $(function() {
+<head>
+    <title>Haytham Calendar</title>
+    <meta name="author" content="Fahim" />
+    <link rel="stylesheet" type="text/css" href="../dist/ibn-al-haytham.css" />
+    <style type="text/css">
+    div:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    </style>
+</head>
 
-            var calendar = $("input").haytham({
-               events: {
-                  clickDate: {
-                     handler: function(data) {
+<body>
+    <h2>Managing the container by Haytham</h2>
+    <div class="haytham-managed-container"></div>
+
+    <h2>Managing the container manually</h2>
+    <div class="manually-managed-container"></div>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/ibn-al-haytham.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        var calendar = $(".haytham-managed-container").haytham({
+            events: {
+                clickDate: {
+                    handler: function(data) {
                         alert(data.dayName() + ", " + data.dayOfMonth() + " " + data.monthName());
-                     }
-                  }
-               }
-            });
+                    }
+                }
+            }
+        });
+        calendar.generate(2017, 2);
+        calendar.generate(2017, 3);
+        calendar.generate(2017, 3);
+        calendar.generate(2017, 3);
 
+        $(".manually-managed-container").append(new HAYTHAM.api({
+            events: {
+                clickDate: {
+                    handler: function(data) {
+                        alert(data.dayName() + ", " + data.dayOfMonth() + " " + data.monthName());
+                    }
+                }
+            }
+        }).generate(2017, 2));
 
-            $(".iah-datepicker-container").append(calendar.generate(2017, 2));
-         });
-      </script>
-   </body>
+    });
+    </script>
+</body>
+
 </html>

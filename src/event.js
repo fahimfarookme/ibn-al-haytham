@@ -63,16 +63,24 @@
 
       bind: function(template) {
          for (var key in this.events) {
-            var event = this.events[key];
-            template.on(event.name, event.selector, this._handler(event.handler, this.options));
+            if (this.events.hasOwnProperty(key)) {
+               var event = this.events[key];
+               if (typeof event === "function") {
+                  event = haytham.defaults.events[key];
+                  event.handler = this.events[key];
+               }
+               template.on(event.name, event.selector, this._handler(event.handler, this.options));
+            }
          }
          return template;
       },
 
       unbind: function(template) {
          for (var key in this.events) {
-            var event = this.events[key];
-            template.off(event.name);
+            if (this.events.hasOwnProperty(key)) {
+               var event = this.events[key];
+               template.off(event.name);
+            }
          }
          return template;
       },

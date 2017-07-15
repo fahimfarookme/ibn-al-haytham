@@ -14,8 +14,7 @@
     * @param  {object}  options The optional settings.
     * @return {void}
     */
-   var api = function(element, options) {
-      this.$element = $(element);
+   var api = function(options) {
       this.options = $.extend(true, {}, haytham.defaults, options);
       this.template = new haytham.template(this.options);
    };

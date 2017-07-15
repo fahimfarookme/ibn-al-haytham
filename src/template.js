@@ -40,7 +40,6 @@
     */
    var template = function(options) {
       this.options = options;
-      this.$weekHeader = $("<div class='week-header'>").append(this._generateWeekHeader());
       this.event = new haytham.event(options);
    };
 
@@ -108,6 +107,7 @@
        * @return {element}       Generated html element.
        */
       _generateBody: function(year, month) {
+         var $weekHeader = $("<div class='week-header'>").append(this._generateWeekHeader());
          // new Date(year, month, 1).getDay() = first day of first week
          // new Date(year, month + 1, 0).getDate() = last day ofmonth  
          var diff = new Date(year, month, 1).getDay() - this.options.week.start;
@@ -122,7 +122,7 @@
             firstDayOfFirstWeek: firstDayOfFirstWeek
          };
 
-         return $("<div class='body'>").append(this.$weekHeader, this._generateWeeks(data.week, data));
+         return $("<div class='body'>").append($weekHeader, this._generateWeeks(data.week, data));
       },
 
       /**

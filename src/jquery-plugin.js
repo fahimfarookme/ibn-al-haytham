@@ -7,7 +7,15 @@
 
    "user strict";
 
-   var NAMESPACE = "haytham";
+   var NAMESPACE = "haytham",
+
+      decorate = function(mod, element) {
+         var fn = mod.generate;
+         mod.generate = function(year, month) {
+            $(element).append(fn.call(mod, year, month));
+         }
+         return mod;
+      };
 
    // Register as a jquery plugin
    // jQuery.fn = jQuery.prototype
@@ -17,9 +25,10 @@
       // this.each - to instantiate multiple calendars for multiple selected elements.
       this.each(function() {
          var mod = $(this).data(NAMESPACE);
-
          if (!mod) { // if not already instantiated
-            $(this).data(NAMESPACE, (mod = new api(this, options)));
+            mod = decorate(new api(options), this);
+            $(this).addClass("iah-datepicker-container");
+            $(this).data(NAMESPACE, mod);
          }
          result.push(mod);
       });
